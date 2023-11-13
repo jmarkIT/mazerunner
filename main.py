@@ -69,27 +69,46 @@ class Cell:
     def draw(self):
         if self.has_left_wall:
             line = Line(Point(self._x1, self._y1), Point(self._x1, self._y2))
-            self._win.draw_line(line, "red")
+            self._win.draw_line(line, "black")
         if self.has_right_wall:
             line = Line(Point(self._x2, self._y1), Point(self._x2, self._y2))
-            self._win.draw_line(line, "red")
+            self._win.draw_line(line, "black")
         if self.has_top_wall:
             line = Line(Point(self._x1, self._y1), Point(self._x2, self._y1))
-            self._win.draw_line(line, "red")
+            self._win.draw_line(line, "black")
         if self.has_bottom_wall:
             line = Line(Point(self._x1, self._y2), Point(self._x2, self._y2))
-            self._win.draw_line(line, "red")
+            self._win.draw_line(line, "black")
 
-    def draw_move(self, to_cell, undo=False):
-        pass
+    def get_center(self) -> Point:
+        x = (self._x1 + self._x2) // 2
+        y = (self._y1 + self._y2) // 2
+        return Point(x, y)
+
+    def draw_move(self, to_cell: "Cell", undo=False):
+        point_1 = self.get_center()
+        point_2 = to_cell.get_center()
+        line = Line(point_1, point_2)
+        if undo is False:
+            line_color = "red"
+        else:
+            line_color = "gray"
+        self._win.draw_line(line, line_color)
 
 
 def main():
     win = Window(800, 600)
-    cell = Cell(200, 200, 400, 400, win)
-    cell.has_bottom_wall = False
-    cell.has_left_wall = False
-    cell.draw()
+    cell1 = Cell(200, 200, 400, 400, win)
+    cell2 = Cell(400, 200, 600, 400, win)
+    cell3 = Cell(400, 400, 600, 600, win)
+    cell1.has_right_wall = False
+    cell2.has_left_wall, cell2.has_bottom_wall = False, False
+    cell3.has_top_wall = False
+    cell1.draw()
+    cell2.draw()
+    cell3.draw()
+    cell1.draw_move(cell2)
+    cell2.draw_move(cell3)
     win.wait_for_close()
 
 
