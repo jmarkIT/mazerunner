@@ -53,6 +53,14 @@ class Maze:
         self._cells[0][0].has_top_wall = False
         self._draw_cell(0, 0)
         self._animate()
+        last_col = self.num_cols - 1
+        last_row = self.num_rows - 1
+        self._cells[last_col][last_row].has_bottom_wall = False
+        self._draw_cell(
+            last_col,
+            last_row,
+        )
+        self._animate()
 
     def _animate(self):
         if self._win is None:
