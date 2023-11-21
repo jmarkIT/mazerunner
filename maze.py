@@ -123,7 +123,6 @@ class Maze:
         for col in self._cells:
             for cell in col:
                 cell.visited = False
-                print(cell.visited)
 
     def _animate(self):
         if self._win is None:
