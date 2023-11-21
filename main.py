@@ -5,7 +5,9 @@ from graphics import Window
 def main():
     win = Window(800, 600)
 
-    Maze(10, 10, 5, 5, 100, 100, win)
+    m = Maze(10, 10, 5, 5, 100, 100, win)
+
+    m.solve()
 
     win.wait_for_close()
 
