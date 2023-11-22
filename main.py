@@ -7,7 +7,7 @@ def main():
     win = Window(800, 600)
 
     seed = random()
-    m = Maze(10, 10, 5, 5, 100, 100, win, seed)
+    m = Maze(10, 10, 10, 15, 50, 50, win, seed)
 
     m.solve()
 
