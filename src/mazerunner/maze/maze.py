@@ -1,7 +1,8 @@
 import random
 from time import sleep
-from graphics import Window
-from cell import Cell
+from graphics.graphics import Window
+from cell.cell import Cell
+
 
 random.seed()
 

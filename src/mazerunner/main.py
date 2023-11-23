@@ -1,6 +1,6 @@
-from maze import Maze
-from graphics import Window
 from random import random
+from graphics.graphics import Window
+from maze.maze import Maze
 
 
 def main():
