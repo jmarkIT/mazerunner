@@ -21,3 +21,6 @@ dev = [
     "pylint",
     "pyinstaller",
 ]
+lint = [
+    "black>=23.11.0",
+]
